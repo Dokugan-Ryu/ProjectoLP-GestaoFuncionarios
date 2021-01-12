@@ -3,8 +3,9 @@
 #include "funcionarios.h"
 #include "input.h"
 
-void expandirFuncionarios(){
-    
+void expandirFuncionarios(Funcionario *funcionario, int *tam, int acrescimo){
+        funcionario = (Funcionario *) realloc(funcionario, (*tam) + acrescimo);
+        *tam += acrescimo;
 }
 
 void inserirFuncionarios(Funcionario *funcionario, int num_funcionarios, int *tam, int *contador) {
@@ -82,20 +83,26 @@ void lerFuncionarios(Funcionario *funcionario, int *tam, int *contador) {
         perror("Não foi possível abrir o ficheiro.");
         exit(EXIT_FAILURE);
     }
-
-    Funcionario *temporario = (Funcionario *) malloc(sizeof (Funcionario));
+    
+    int tam_temp = 100;
+    int contador_temp = 0;
+    Funcionario *temporario = (Funcionario *) malloc( sizeof(Funcionario)*tam_temp);
     int fim = 0;
-    int num_func_lidos = 0;
+    //int num_func_lidos = 0;
     while (fim == 0) {
         //Funcionario temporario = fread(funcionario, sizeof(Funcionario), *contador, fp);
-        if (fread(temporario, sizeof (Funcionario), 1, fp) != 1) {
+        if (fread((temporario+contador_temp), sizeof (Funcionario), 1, fp) != 1) {
             fim = 1;
         } else {
-            num_func_lidos++;
-            printf("Funcionario %d: %d %c\n", num_func_lidos, temporario->codigo, temporario->nome[0]);
+            //num_func_lidos++;
+            //printf("Funcionario %d: %d %c\n", num_func_lidos, temporario->codigo, temporario->nome[0]);
             //inserirFuncionarios()
+            contador_temp++;
+            if (contador_temp==tam_temp){
+                expandirFuncionarios(temporario, &tam_temp, 100);
+            }
             
-            funcionario[*contador + num_func_lidos] = *temporario;
+            funcionario[*contador + contador_temp] = *temporario;
         }
     }
     
@@ -106,9 +113,9 @@ void lerFuncionarios(Funcionario *funcionario, int *tam, int *contador) {
 }
 
 void listarFuncionarios(Funcionario *funcionarios, int contador) {
-    printf("\n\n");
+    printf("\n");
     if (contador == 0) {
-        printf("Não há funcionarios registados.\n");
+        printf("Não há funcionarios registados.\n\n");
     } else {
         printf("Código\tNome\tNº telefone\t\n");
         for (int i = 0; i < contador; i++) {

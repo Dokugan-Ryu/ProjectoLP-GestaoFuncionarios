@@ -55,7 +55,10 @@ void menuPrincipal() {
                 break;
             case '4':
                 listarFuncionarios(funcionario, contador_funcionario);
-                obterChar("Prima [Enter] para continuar...");
+                //obterChar("Prima [Enter] para continuar...");
+                printf("Prima [Enter] para continuar...");
+                cleanInputBuffer();
+                
                 break;
             case '5':
                 break;
@@ -63,7 +66,7 @@ void menuPrincipal() {
                 break;
             default:
                 printf("\nSeleção inválida. Por favor tente novamente.\n"
-                        "Prima [Enter] para continuar");
+                        "Prima [Enter] para continuar...");
                 cleanInputBuffer();
         }
 
