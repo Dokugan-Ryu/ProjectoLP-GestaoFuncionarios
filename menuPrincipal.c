@@ -56,7 +56,7 @@ void menuPrincipal() {
                 printf("%d", procurarFuncionario(funcionario, 4569, contador_funcionario));
                 break;
             case '6':
-                removerFuncionario(funcionario, tam_funcionario, &contador_funcionario);
+                removerFuncionario(funcionario, &contador_funcionario);
                 break;
             case '7':
                 editarFuncionario(funcionario, contador_funcionario);
