@@ -50,10 +50,10 @@ void inserirFuncionarios(Funcionario *funcionario, int num_funcionarios, int *ta
         funcionario[i].b_fds = obterFloat(0, 10000, "Bónus fim-de-semana: ");
 
         (*contador)++;
-
     }
-
-
+    printf("\nForam adicionados %d funcionário.\nPrima [Enter] para continuar...", num_funcionarios);
+    cleanInputBuffer();
+    system("clear");
 }
 
 void gravarFuncionarios(Funcionario *funcionario, int *contador) {
@@ -66,6 +66,9 @@ void gravarFuncionarios(Funcionario *funcionario, int *contador) {
     fclose(fp);
     if (n_funcionarios_escritos == *contador) {
         printf("Foram gravados %d funcionários.", n_funcionarios_escritos);
+        printf("\nPrima [Enter] para continuar...");
+        cleanInputBuffer();
+        system("clear");
     } else {
         printf("Ocorreu um erro ao gravar funcionários.");
     }
@@ -97,6 +100,9 @@ void lerFuncionarios(Funcionario *funcionario, int *tam, int *contador) {
         funcionario[(*contador) + i] = temporario[i];
     }
     (*contador) += contador_temp;
+    printf("Foram lidos %d funcionários.\nPrima [Enter] para continuar...", contador_temp);
+    cleanInputBuffer();
+    system("clear");
 }
 
 void listarFuncionarios(Funcionario *funcionarios, int contador) {
@@ -104,13 +110,13 @@ void listarFuncionarios(Funcionario *funcionarios, int contador) {
     if (contador == 0) {
         printf("Não há funcionarios registados.\n\n");
     } else {
-        printf("Código\tNome\t\t\tNº telefone\tNº filhos\tCargo\tEstado Civil\
+        printf("Código\tNome\t\tNº telefone\tNº filhos\tCargo\tEstado Civil\
                 \nData nascimento\tData contratação\t Data despedimento\
                 \nSalário/hora\tSubsídio alimentação\
                 \n\n");
         for (int i = 0; i < contador; i++) {
-            printf("%d\t%s\t%s\t%d\t%d\t%d\n\
-                    %d-%d-%d\t%d-%d-%d\t%d-%d-%d\
+            printf("%d\t%s\t%s\t%d\t%d\t%d\
+                    \n%d-%d-%d\t%d-%d-%d\t%d-%d-%d\
                     \n%.2f\t%.2f\
                     \n\n",
                     funcionarios[i].codigo,
@@ -132,5 +138,8 @@ void listarFuncionarios(Funcionario *funcionarios, int contador) {
                     funcionarios[i].subs_alimentacao);
         }
     }
+    printf("Prima [Enter] para continuar...");
+    cleanInputBuffer();
+    system("clear");
 }
 
