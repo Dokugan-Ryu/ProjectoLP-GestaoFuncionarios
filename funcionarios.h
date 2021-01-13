@@ -25,8 +25,6 @@ extern "C" {
         float b_idade, b_antiguidade, b_assiduidade, b_fds;      
     } Funcionario;
 
-
-    void inicializarFuncionarios();
     void lerFuncionarios(Funcionario *funcionario, int *tam, int *contador);
     void gravarFuncionarios(Funcionario *funcionario, int *contador);
     void inserirFuncionarios(Funcionario *funcionario, int num_funcionarios,
@@ -34,10 +32,6 @@ extern "C" {
     void listarFuncionarios(Funcionario *funcionarios, int contador);
     
     
-
-
-
-
 #ifdef __cplusplus
 }
 #endif

@@ -9,22 +9,10 @@
 
 void menuPrincipal() {
 
-    char nome[] = "eraumavezumgatomaltesquequeriasermaisalto";
     Funcionario *funcionario = (Funcionario*) malloc(sizeof (Funcionario) * MAX_FUNCIONARIOS);
     int tam_funcionario = MAX_FUNCIONARIOS;
     int contador_funcionario = 0;
 
-
-/*
-    inserirFuncionarios(funcionario, 20, &tam_funcionario, &contador_funcionario);
-    getchar();
-
-    gravarFuncionarios(funcionario, &contador_funcionario);
-    getchar();
-
-    lerFuncionarios(funcionario, &tam_funcionario, &contador_funcionario);
-    getchar();
-*/
     
     char selecao = 0;
     do {
@@ -55,10 +43,8 @@ void menuPrincipal() {
                 break;
             case '4':
                 listarFuncionarios(funcionario, contador_funcionario);
-                //obterChar("Prima [Enter] para continuar...");
                 printf("Prima [Enter] para continuar...");
                 cleanInputBuffer();
-                
                 break;
             case '5':
                 break;
@@ -69,6 +55,5 @@ void menuPrincipal() {
                         "Prima [Enter] para continuar...");
                 cleanInputBuffer();
         }
-
     } while (selecao != '0');
 }

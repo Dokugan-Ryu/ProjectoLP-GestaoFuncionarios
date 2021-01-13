@@ -3,9 +3,9 @@
 #include "funcionarios.h"
 #include "input.h"
 
-void expandirFuncionarios(Funcionario *funcionario, int *tam, int acrescimo){
-        funcionario = (Funcionario *) realloc(funcionario, (*tam) + acrescimo);
-        *tam += acrescimo;
+void expandirFuncionarios(Funcionario *funcionario, int *tam, int acrescimo) {
+    funcionario = (Funcionario *) realloc(funcionario, (*tam) + acrescimo);
+    *tam += acrescimo;
 }
 
 void inserirFuncionarios(Funcionario *funcionario, int num_funcionarios, int *tam, int *contador) {
@@ -14,8 +14,8 @@ void inserirFuncionarios(Funcionario *funcionario, int num_funcionarios, int *ta
         funcionario = (Funcionario *) realloc(funcionario, novo_tam);
         *tam = novo_tam;
     }
-    for(int i = 0; i < num_funcionarios; i++){
-        printf("---- A adicionar funcionário %d de %d ----\n", i+1, num_funcionarios);
+    for (int i = 0; i < num_funcionarios; i++) {
+        printf("---- A adicionar funcionário %d de %d ----\n", i + 1, num_funcionarios);
         funcionario[i].codigo = obterInt(1000, 32000, "Código: ");
         lerString(funcionario[i].nome, MAX_NOME, "Nome: ");
         lerString(funcionario[i].num_telefone, MAX_TELEFONE, "Nº telefone: ");
@@ -23,37 +23,37 @@ void inserirFuncionarios(Funcionario *funcionario, int num_funcionarios, int *ta
         funcionario[i].cargo = obterInt(0, 2, "Cargo (0 - Funcionário   1 - Chefe   2 - Administrador): ");
         funcionario[i].estado_civil = obterInt(0, 3,
                 "Estado Civil (0 - Solteiro   1 - Casado    2 - Divorciado   3 - Viuvo): ");
-        
+
         printf("Data de nascimento\n");
         funcionario[i].nascimento.dia = obterInt(1, 31, "Dia: ");
         funcionario[i].nascimento.dia = obterInt(1, 12, "Mês: ");
         funcionario[i].nascimento.dia = obterInt(1900, 2021, "Ano: ");
-    
-        
+
+
         printf("Data de contratação\n");
         funcionario[i].contratado.dia = obterInt(1, 31, "Dia: ");
         funcionario[i].contratado.dia = obterInt(1, 12, "Mês: ");
         funcionario[i].contratado.dia = obterInt(1900, 2021, "Ano: ");
-        
-        
+
+
         printf("Data de despedimento\n");
         funcionario[i].despedido.dia = obterInt(0, 31, "Dia: ");
         funcionario[i].despedido.dia = obterInt(0, 12, "Mês: ");
         funcionario[i].despedido.dia = obterInt(0, 2021, "Ano: ");
-    
+
         funcionario[i].salario_hora = obterFloat(0, 10000, "Valor salário/hora: ");
         funcionario[i].subs_alimentacao = obterFloat(0, 10000, "Valor subsídio de alimentação: ");
-        
+
         funcionario[i].b_idade = obterFloat(0, 10000, "Bónus idade: ");
         funcionario[i].b_antiguidade = obterFloat(0, 10000, "Bónus antiguidade: ");
         funcionario[i].b_assiduidade = obterFloat(0, 10000, "Bónus assiduidade: ");
         funcionario[i].b_fds = obterFloat(0, 10000, "Bónus fim-de-semana: ");
-        
+
         (*contador)++;
-        
+
     }
-    
-    
+
+
 }
 
 void gravarFuncionarios(Funcionario *funcionario, int *contador) {
@@ -71,45 +71,32 @@ void gravarFuncionarios(Funcionario *funcionario, int *contador) {
     }
 }
 
-/**
- * 
- * @param funcionario
- * @param tam
- * @param contador
- */
 void lerFuncionarios(Funcionario *funcionario, int *tam, int *contador) {
     FILE *fp = fopen("funcionarios.bin", "rb");
     if (fp == NULL) {
         perror("Não foi possível abrir o ficheiro.");
         exit(EXIT_FAILURE);
     }
-    
+
     int tam_temp = 100;
-    int contador_temp = 0;
-    Funcionario *temporario = (Funcionario *) malloc( sizeof(Funcionario)*tam_temp);
+    Funcionario *temporario = (Funcionario *) malloc(sizeof (Funcionario) * tam_temp);
+
     int fim = 0;
-    //int num_func_lidos = 0;
+    int contador_temp = 0;
     while (fim == 0) {
-        //Funcionario temporario = fread(funcionario, sizeof(Funcionario), *contador, fp);
-        if (fread((temporario+contador_temp), sizeof (Funcionario), 1, fp) != 1) {
-            fim = 1;
-        } else {
-            //num_func_lidos++;
-            //printf("Funcionario %d: %d %c\n", num_func_lidos, temporario->codigo, temporario->nome[0]);
-            //inserirFuncionarios()
+        if (contador_temp == tam_temp) {
+            expandirFuncionarios(temporario, &tam_temp, 100);
+        }
+        if (fread((temporario + contador_temp), sizeof (Funcionario), 1, fp) == 1) {
             contador_temp++;
-            if (contador_temp==tam_temp){
-                expandirFuncionarios(temporario, &tam_temp, 100);
-            }
-            
-            funcionario[*contador + contador_temp] = *temporario;
+        } else {
+            fim = 1;
         }
     }
-    
-    //int n_funcionarios_escritos = fread(funcionario, sizeof(Funcionario), *contador, fp);
-    fclose(fp);
-    free(temporario);
-    temporario = NULL;
+    for (int i = 0; i < contador_temp; i++) {
+        funcionario[(*contador) + i].codigo = temporario[i].codigo;
+    }
+    (*contador) += contador_temp;
 }
 
 void listarFuncionarios(Funcionario *funcionarios, int contador) {
