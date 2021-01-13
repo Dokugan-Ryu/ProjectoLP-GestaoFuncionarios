@@ -53,7 +53,7 @@ void menuPrincipal() {
                 listarFuncionarios(funcionario, contador_funcionario);
                 break;
             case '5':
-                printf("%d", procurarFuncionario(funcionario, 4569, contador_funcionario));
+                printf("%d", procurarFuncionario(funcionario, -1, contador_funcionario));
                 break;
             case '6':
                 removerFuncionario(funcionario, &contador_funcionario);

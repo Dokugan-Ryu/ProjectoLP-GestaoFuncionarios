@@ -160,11 +160,15 @@ void listarFuncionarios(Funcionario *funcionarios, int contador) {
     system("clear");
 }
 
-
 int procurarFuncionario(Funcionario *funcionario, int codigo, int contador){
+    if (codigo == -1){
+        codigo = obterInt(1000, 32000, "Código: ");
+    }    
     printf("A procurar funcionário com o código %d...\n", codigo);
     for (int i = 0; i<contador; i++){
         if (funcionario[i].codigo == codigo){
+            printf ("Funcionario encontrado\n");
+            listarFuncionarios((funcionario+i), 1);
             return i;
         }
     }
