@@ -5,15 +5,13 @@
 #include "funcionarios.h"
 #include "input.h"
 
-
-
 void menuPrincipal() {
 
     Funcionario *funcionario = (Funcionario*) malloc(sizeof (Funcionario) * MAX_FUNCIONARIOS);
     int tam_funcionario = MAX_FUNCIONARIOS;
     int contador_funcionario = 0;
 
-    
+
     char selecao = 0;
     do {
         printf("\n");
@@ -26,6 +24,11 @@ void menuPrincipal() {
         printf("4-Importar/Exportar dados\n");
         printf("5-Gerir funcionários\n");
         printf("0-Sair\n");
+
+        /*
+        lerFuncionarios(funcionario, &tam_funcionario, &contador_funcionario);
+        listarFuncionarios(funcionario, contador_funcionario);
+        */
 
         printf("\nEscolha: ");
         selecao = getchar();

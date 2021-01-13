@@ -26,20 +26,20 @@ void inserirFuncionarios(Funcionario *funcionario, int num_funcionarios, int *ta
 
         printf("Data de nascimento\n");
         funcionario[i].nascimento.dia = obterInt(1, 31, "Dia: ");
-        funcionario[i].nascimento.dia = obterInt(1, 12, "Mês: ");
-        funcionario[i].nascimento.dia = obterInt(1900, 2021, "Ano: ");
+        funcionario[i].nascimento.mes = obterInt(1, 12, "Mês: ");
+        funcionario[i].nascimento.ano = obterInt(1900, 2021, "Ano: ");
 
 
         printf("Data de contratação\n");
         funcionario[i].contratado.dia = obterInt(1, 31, "Dia: ");
-        funcionario[i].contratado.dia = obterInt(1, 12, "Mês: ");
-        funcionario[i].contratado.dia = obterInt(1900, 2021, "Ano: ");
+        funcionario[i].contratado.mes = obterInt(1, 12, "Mês: ");
+        funcionario[i].contratado.ano = obterInt(1900, 2021, "Ano: ");
 
 
         printf("Data de despedimento\n");
         funcionario[i].despedido.dia = obterInt(0, 31, "Dia: ");
-        funcionario[i].despedido.dia = obterInt(0, 12, "Mês: ");
-        funcionario[i].despedido.dia = obterInt(0, 2021, "Ano: ");
+        funcionario[i].despedido.mes = obterInt(0, 12, "Mês: ");
+        funcionario[i].despedido.ano = obterInt(0, 2021, "Ano: ");
 
         funcionario[i].salario_hora = obterFloat(0, 10000, "Valor salário/hora: ");
         funcionario[i].subs_alimentacao = obterFloat(0, 10000, "Valor subsídio de alimentação: ");
@@ -94,7 +94,7 @@ void lerFuncionarios(Funcionario *funcionario, int *tam, int *contador) {
         }
     }
     for (int i = 0; i < contador_temp; i++) {
-        funcionario[(*contador) + i].codigo = temporario[i].codigo;
+        funcionario[(*contador) + i] = temporario[i];
     }
     (*contador) += contador_temp;
 }
@@ -104,9 +104,32 @@ void listarFuncionarios(Funcionario *funcionarios, int contador) {
     if (contador == 0) {
         printf("Não há funcionarios registados.\n\n");
     } else {
-        printf("Código\tNome\tNº telefone\t\n");
+        printf("Código\tNome\t\t\tNº telefone\tNº filhos\tCargo\tEstado Civil\
+                \nData nascimento\tData contratação\t Data despedimento\
+                \nSalário/hora\tSubsídio alimentação\
+                \n\n");
         for (int i = 0; i < contador; i++) {
-            printf("%d\t%s\n", funcionarios[i].codigo, funcionarios[i].nome);
+            printf("%d\t%s\t%s\t%d\t%d\t%d\n\
+                    %d-%d-%d\t%d-%d-%d\t%d-%d-%d\
+                    \n%.2f\t%.2f\
+                    \n\n",
+                    funcionarios[i].codigo,
+                    funcionarios[i].nome,
+                    funcionarios[i].num_telefone,
+                    funcionarios[i].num_filhos,
+                    funcionarios[i].cargo,
+                    funcionarios[i].estado_civil,
+                    funcionarios[i].nascimento.dia,
+                    funcionarios[i].nascimento.mes,
+                    funcionarios[i].nascimento.ano,
+                    funcionarios[i].contratado.dia,
+                    funcionarios[i].contratado.mes,
+                    funcionarios[i].contratado.ano,
+                    funcionarios[i].despedido.dia,
+                    funcionarios[i].despedido.mes,
+                    funcionarios[i].despedido.ano,
+                    funcionarios[i].salario_hora,
+                    funcionarios[i].subs_alimentacao);
         }
     }
 }
