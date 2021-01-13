@@ -128,20 +128,42 @@ void listarFuncionarios(Funcionario *funcionarios, int contador) {
         printf("Não há funcionarios registados.\n\n");
     } else {
         printf("Código\tNome\t\tNº telefone\tNº filhos\tCargo\tEstado Civil\
-                \nData nascimento\tData contratação\t Data despedimento\
-                \nSalário/hora\tSubsídio alimentação\
-                \n\n");
+                \nData nascimento\tData contratação\tData despedimento\
+\tSalário/hora\tSubsídio alimentação\n\n\n");
         for (int i = 0; i < contador; i++) {
-            printf("%d\t%s\t%s\t%d\t%d\t%d\
-                    \n%d-%d-%d\t%d-%d-%d\t%d-%d-%d\
-                    \n%.2f\t%.2f\
-                    \n\n",
+            printf("%d\t%s\t%s\t%d\t",
                     funcionarios[i].codigo,
                     funcionarios[i].nome,
                     funcionarios[i].num_telefone,
-                    funcionarios[i].num_filhos,
-                    funcionarios[i].cargo,
-                    funcionarios[i].estado_civil,
+                    funcionarios[i].num_filhos);
+            switch (funcionarios[i].estado_civil){
+                case 0:
+                    printf("Solteiro");
+                    break;
+                case 1:
+                    printf("Casado");
+                    break;
+                case 2:
+                    printf("Divorciado");
+                    break;
+                case 3:
+                    printf("Viúvo");
+                    break;
+            }
+            printf("\t");
+            switch (funcionarios[i].cargo){
+                case 0:
+                    printf("Funcionário");
+                    break;
+                case 1:
+                    printf("Chefe");
+                    break;
+                case 2:
+                    printf("Administrador");
+                    break;
+            }
+            printf("\n%d-%d-%d\t%d-%d-%d\t%d-%d-%d\t%.2f\t%.2f\
+                    \n\n",
                     funcionarios[i].nascimento.dia,
                     funcionarios[i].nascimento.mes,
                     funcionarios[i].nascimento.ano,
