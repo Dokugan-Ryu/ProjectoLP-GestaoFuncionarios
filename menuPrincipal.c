@@ -34,7 +34,7 @@ void menuPrincipal() {
         selecao = getchar();
         cleanInputBuffer();
         system("clear");
-        
+
         switch (selecao) {
             case '1':
                 inserirFuncionarios(
@@ -51,9 +51,15 @@ void menuPrincipal() {
                 break;
             case '4':
                 listarFuncionarios(funcionario, contador_funcionario);
-
                 break;
             case '5':
+                printf("%d", procurarFuncionario(funcionario, 4569, contador_funcionario));
+                break;
+            case '6':
+                removerFuncionario(funcionario, tam_funcionario, &contador_funcionario);
+                break;
+            case '7':
+                editarFuncionario(funcionario, contador_funcionario);
                 break;
             case '0':
                 break;

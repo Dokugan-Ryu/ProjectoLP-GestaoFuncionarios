@@ -30,7 +30,9 @@ extern "C" {
     void inserirFuncionarios(Funcionario *funcionario, int num_funcionarios,
             int *tam, int *contador);
     void listarFuncionarios(Funcionario *funcionarios, int contador);
-    
+    int procurarFuncionario(Funcionario *funcionario, int codigo, int contador);
+    void removerFuncionario(Funcionario *funcionario, int *contador);
+    void editarFuncionario(Funcionario *funcionario, int contador);
     
 #ifdef __cplusplus
 }

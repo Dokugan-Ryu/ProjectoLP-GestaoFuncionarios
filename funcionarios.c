@@ -16,7 +16,24 @@ void inserirFuncionarios(Funcionario *funcionario, int num_funcionarios, int *ta
     }
     for (int i = 0; i < num_funcionarios; i++) {
         printf("---- A adicionar funcionário %d de %d ----\n", i + 1, num_funcionarios);
-        funcionario[i].codigo = obterInt(1000, 32000, "Código: ");
+        //funcionario[i].codigo = obterInt(1000, 32000, "Código: ");
+        int funcionario_existe;
+        do{
+            int novo_codigo = obterInt(1000, 32000, "Código: ");
+            funcionario_existe = procurarFuncionario(funcionario, novo_codigo, *contador);
+            if (funcionario_existe != -1){
+                printf("Já existe um funcionário com o código %d. "
+                        "Por favor insira um código diferente. \n", novo_codigo);
+                printf("Prima [Enter] para continuar...\n");
+                cleanInputBuffer();
+            } else {
+                funcionario[i].codigo = novo_codigo;
+            }
+        }while(funcionario_existe != -1);
+        /*if (procurarFuncionario(funcionario, funcionario[i].codigo, *contador) != -1){
+            printf("Já existe um funcionário com o código %d."
+                    "Por favor insira um código diferente", funcionario[i].codigo);
+        }*/
         lerString(funcionario[i].nome, MAX_NOME, "Nome: ");
         lerString(funcionario[i].num_telefone, MAX_TELEFONE, "Nº telefone: ");
         funcionario[i].num_filhos = obterInt(0, 20, "Número de filhos: ");
@@ -143,3 +160,77 @@ void listarFuncionarios(Funcionario *funcionarios, int contador) {
     system("clear");
 }
 
+
+int procurarFuncionario(Funcionario *funcionario, int codigo, int contador){
+    printf("A procurar funcionário com o código %d...\n", codigo);
+    for (int i = 0; i<contador; i++){
+        if (funcionario[i].codigo == codigo){
+            return i;
+        }
+    }
+    return -1;
+}
+
+void removerFuncionario(Funcionario *funcionario, int *contador){
+    printf("-------- Remover Funcionário --------\n");
+    int codigo = obterInt(1000, 32000, "Codigo: ");
+    int indice_funcionario = procurarFuncionario(funcionario, codigo, *contador);
+    if (indice_funcionario == -1){
+        printf("Funcionário não encontrado. Por favor tente novamente.\n");
+    } else {
+        for (indice_funcionario; indice_funcionario < (*contador); indice_funcionario++){
+            funcionario[indice_funcionario] = funcionario[indice_funcionario+1];
+        }
+        (*contador)--;
+        printf("O funcionário com o código %d foi removido.\n", codigo);
+    }
+    printf("Prima [Enter] para continuar...");
+    cleanInputBuffer();
+}
+
+void editarFuncionario(Funcionario *funcionario, int contador){
+    printf("-------- Remover Funcionário --------\n");
+    int codigo = obterInt(1000, 32000, "Codigo: ");
+    int indice_funcionario = procurarFuncionario(funcionario, codigo, contador);
+    if (indice_funcionario == -1){
+        printf("Funcionário não encontrado. Por favor tente novamente.\n");
+    } else {
+        
+        lerString(funcionario[indice_funcionario].nome, MAX_NOME, "Nome: ");
+        lerString(funcionario[indice_funcionario].num_telefone, MAX_TELEFONE, "Nº telefone: ");
+        funcionario[indice_funcionario].num_filhos = obterInt(0, 20, "Número de filhos: ");
+        funcionario[indice_funcionario].cargo = obterInt(0, 2, "Cargo (0 - Funcionário   1 - Chefe   2 - Administrador): ");
+        funcionario[indice_funcionario].estado_civil = obterInt(0, 3,
+                "Estado Civil (0 - Solteiro   1 - Casado    2 - Divorciado   3 - Viuvo): ");
+
+        printf("Data de nascimento\n");
+        funcionario[indice_funcionario].nascimento.dia = obterInt(1, 31, "Dia: ");
+        funcionario[indice_funcionario].nascimento.mes = obterInt(1, 12, "Mês: ");
+        funcionario[indice_funcionario].nascimento.ano = obterInt(1900, 2021, "Ano: ");
+
+
+        printf("Data de contratação\n");
+        funcionario[indice_funcionario].contratado.dia = obterInt(1, 31, "Dia: ");
+        funcionario[indice_funcionario].contratado.mes = obterInt(1, 12, "Mês: ");
+        funcionario[indice_funcionario].contratado.ano = obterInt(1900, 2021, "Ano: ");
+
+
+        printf("Data de despedimento\n");
+        funcionario[indice_funcionario].despedido.dia = obterInt(0, 31, "Dia: ");
+        funcionario[indice_funcionario].despedido.mes = obterInt(0, 12, "Mês: ");
+        funcionario[indice_funcionario].despedido.ano = obterInt(0, 2021, "Ano: ");
+
+        funcionario[indice_funcionario].salario_hora = obterFloat(0, 10000, "Valor salário/hora: ");
+        funcionario[indice_funcionario].subs_alimentacao = obterFloat(0, 10000, "Valor subsídio de alimentação: ");
+
+        funcionario[indice_funcionario].b_idade = obterFloat(0, 10000, "Bónus idade: ");
+        funcionario[indice_funcionario].b_antiguidade = obterFloat(0, 10000, "Bónus antiguidade: ");
+        funcionario[indice_funcionario].b_assiduidade = obterFloat(0, 10000, "Bónus assiduidade: ");
+        funcionario[indice_funcionario].b_fds = obterFloat(0, 10000, "Bónus fim-de-semana: ");
+
+        
+        printf("O funcionário com o código %d foi editado.\n", codigo);
+    }
+    printf("Prima [Enter] para continuar...");
+    cleanInputBuffer();
+}
