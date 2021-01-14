@@ -33,6 +33,7 @@ extern "C" {
     int procurarFuncionario(Funcionario *funcionario, int codigo, int contador);
     void removerFuncionario(Funcionario *funcionario, int *contador);
     void editarFuncionario(Funcionario *funcionario, int contador);
+    void gerirFuncionarios(Funcionario *funcionario, int *tam_funcionario, int *contador_funcionario);
     
 #ifdef __cplusplus
 }

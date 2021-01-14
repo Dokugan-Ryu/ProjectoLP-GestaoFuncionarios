@@ -260,3 +260,53 @@ void editarFuncionario(Funcionario *funcionario, int contador){
     printf("Prima [Enter] para continuar...");
     cleanInputBuffer();
 }
+
+void gerirFuncionarios(Funcionario *funcionario, int *tam_funcionario, int *contador_funcionario){
+    char selecao = 0;
+    do {
+        printf("\n");
+        printf("-----------------------\n");
+        printf("  Gestão Funcionários\n");
+        printf("-----------------------\n");
+        printf("1-Inserir funcionários\n");
+        printf("2-Editar funcionário\n");
+        printf("3-Remover funcionário\n");
+        printf("4-Procurar funcionário\n");
+        printf("5-Listar funcionários\n");
+        printf("0-Sair\n");
+
+        printf("\nEscolha: ");
+        selecao = getchar();
+        cleanInputBuffer();
+        system("clear");
+
+        switch (selecao) {
+            case '1':
+                inserirFuncionarios(
+                        funcionario,
+                        obterInt(1, 1000, "Número de funcionários a adicionar: "),
+                        tam_funcionario,
+                        contador_funcionario);
+                break;
+            case '2':
+                editarFuncionario(funcionario, *contador_funcionario);
+                break;
+            case '3':
+                removerFuncionario(funcionario, contador_funcionario);
+                break;
+            case '4':
+                printf("%d", procurarFuncionario(funcionario, -1, *contador_funcionario));
+                break;
+            case '5':
+                listarFuncionarios(funcionario, *contador_funcionario);
+                break;
+            case '0':
+                break;
+            default:
+                printf("\nSeleção inválida. Por favor tente novamente.\n"
+                        "Prima [Enter] para continuar...");
+                cleanInputBuffer();
+                system("clear");
+        }
+    } while (selecao != '0');
+}

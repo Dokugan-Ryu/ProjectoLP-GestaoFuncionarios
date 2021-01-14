@@ -25,11 +25,6 @@ void menuPrincipal() {
         printf("5-Gerir funcionários\n");
         printf("0-Sair\n");
 
-        /*
-        lerFuncionarios(funcionario, &tam_funcionario, &contador_funcionario);
-        listarFuncionarios(funcionario, contador_funcionario);
-         */
-
         printf("\nEscolha: ");
         selecao = getchar();
         cleanInputBuffer();
@@ -37,11 +32,12 @@ void menuPrincipal() {
 
         switch (selecao) {
             case '1':
-                inserirFuncionarios(
+                gerirFuncionarios(funcionario, &tam_funcionario, &contador_funcionario);
+                /*inserirFuncionarios(
                         funcionario,
                         obterInt(1, 1000, "Número de funcionários a adicionar: "),
                         &tam_funcionario,
-                        &contador_funcionario);
+                        &contador_funcionario);*/
                 break;
             case '2':
                 gravarFuncionarios(funcionario, &contador_funcionario);
