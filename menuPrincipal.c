@@ -33,11 +33,6 @@ void menuPrincipal() {
         switch (selecao) {
             case '1':
                 gerirFuncionarios(funcionario, &tam_funcionario, &contador_funcionario);
-                /*inserirFuncionarios(
-                        funcionario,
-                        obterInt(1, 1000, "Número de funcionários a adicionar: "),
-                        &tam_funcionario,
-                        &contador_funcionario);*/
                 break;
             case '2':
                 gravarFuncionarios(funcionario, &contador_funcionario);
