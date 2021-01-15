@@ -30,12 +30,9 @@ void lerSegSoc(Ss *tabela_ss){
                         coluna++;
                         switch (coluna) {
                             case 1:
-                                strcpy(tabela_ss[linha].cargo, token);
-                                break;
-                            case 2:
                                 tabela_ss[linha].taxa_empresa = strtof(token, NULL);
                                 break;
-                            case 3:
+                            case 2:
                                 tabela_ss[linha].taxa_trabalhador = strtof(token, NULL);
                                 break;
 

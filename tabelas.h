@@ -29,7 +29,6 @@ extern "C" {
 } Irs;
 
 typedef struct {
-    char cargo[20];
     float taxa_empresa;
     float taxa_trabalhador;
 } Ss;
