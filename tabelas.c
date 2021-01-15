@@ -37,7 +37,6 @@ void lerSegSoc(Ss *tabela_ss){
                                 break;
                         }
 
-                        //printf("\na %s %f", token, strtof(token, NULL));
                         for (int i = 0; i < 10; i++) {
                             token[i] = 0;
                         }
@@ -50,7 +49,7 @@ void lerSegSoc(Ss *tabela_ss){
 
                     tabela_ss[linha].taxa_trabalhador = strtof(token, NULL);
                     linha++;
-                    //printf("\nb %s %f", token, strtof(token, NULL));
+
                     for (int i = 0; i < 10; i++) {
                         token[i] = 0;
                     }
@@ -109,7 +108,7 @@ void lerIrs(Irs *tabela_irs) {
                                 break;
                         }
 
-                        //printf("\na %s %f", token, strtof(token, NULL));
+
                         for (int i = 0; i < 10; i++) {
                             token[i] = 0;
                         }
@@ -122,7 +121,7 @@ void lerIrs(Irs *tabela_irs) {
 
                     tabela_irs[linha].cincomais_filhos[ficheiros] = strtof(token, NULL);
                     linha++;
-                    //printf("\nb %s %f", token, strtof(token, NULL));
+
                     for (int i = 0; i < 10; i++) {
                         token[i] = 0;
                     }

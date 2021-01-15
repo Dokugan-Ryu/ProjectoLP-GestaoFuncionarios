@@ -20,8 +20,8 @@ void expandirSalarios(Salario *salarios, int *tam_salarios) {
 int lerFicheiroMes(Salario *salarios, int *tam_salarios, int *cont_salarios) {
     int num_entradas_lidas = 0;
 
-    char nome_ficheiro[50] = "fev2021.txt";
-    /*lerString(nome_ficheiro, 50, "Nome do ficheiro a ler: ");*/
+    char nome_ficheiro[50];
+    lerString(nome_ficheiro, 50, "Nome do ficheiro a ler: ");
 
     FILE *fp = fopen(nome_ficheiro, "r");
     if (fp == NULL) {
@@ -54,9 +54,7 @@ int lerFicheiroMes(Salario *salarios, int *tam_salarios, int *cont_salarios) {
                     coluna++;
                     switch (coluna) {
                         case 1:
-                            //printf("brrrrrrrrrrrrrrrrrrrrrrrrrrr  %d\n", atoi(token));
                             salarios[(*cont_salarios)].codigo = atoi(token);
-                            //printf("********* %d *******", salarios[(*cont_salarios)].codigo);
                             break;
                         case 2:
                             salarios[(*cont_salarios)].dias = atoi(token);
@@ -72,7 +70,6 @@ int lerFicheiroMes(Salario *salarios, int *tam_salarios, int *cont_salarios) {
                             break;
                     }
 
-                    printf("\na %s %d", token, atoi(token));
                     for (int i = 0; i < 10; i++) {
                         token[i] = 0;
                     }
@@ -85,7 +82,6 @@ int lerFicheiroMes(Salario *salarios, int *tam_salarios, int *cont_salarios) {
                 salarios[(*cont_salarios)].faltas = atoi(token);
                 (*cont_salarios)++;
                 num_entradas_lidas++;
-                printf("\nb %s %d", token, atoi(token));
                 for (int i = 0; i < 10; i++) {
                     token[i] = 0;
                 }
@@ -96,7 +92,6 @@ int lerFicheiroMes(Salario *salarios, int *tam_salarios, int *cont_salarios) {
                 fgetc(fp);
             }
         } while (c != -1);
-        //printf("entradas lidas %d", num_entradas_lidas);
         
     }
     fclose(fp);
@@ -114,7 +109,6 @@ void processarSalarios(
     ano = obterInt(1900, 2021, "Ano (1900-2021): ");
 
     int entradas_lidas = lerFicheiroMes(salarios, tam_salarios, cont_salarios);
-    printf("---%d---", salarios[(*salarios_processados) + 0].codigo);
     if (entradas_lidas != 0) {
         for (int i = 0; i < entradas_lidas; i++) {
 
@@ -122,7 +116,6 @@ void processarSalarios(
                     funcionarios,
                     salarios[(*salarios_processados) + i].codigo,
                     cont_funcionarios);
-            printf("*********** %d *********\n", codigo);
             if (codigo != -1) {
                 float idade = (((12 - funcionarios[codigo].nascimento.mes) + mes) / 12) + ano - (funcionarios[codigo].nascimento.ano + 1);
                 printf("\nnasc dia ano %d %d\n",funcionarios[codigo].nascimento.mes, funcionarios[codigo].nascimento.ano);

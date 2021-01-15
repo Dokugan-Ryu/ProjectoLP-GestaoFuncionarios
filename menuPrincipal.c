@@ -25,12 +25,6 @@ void menuPrincipal() {
     lerIrs(tabela_irs);
     lerSegSoc(tabela_ss);
     
-    //processarSalarios(funcionario, tabela_irs, tabela_ss);
-    //lerFicheiroMes(salarios, &tam_salarios, &cont_salarios);
-    lerFuncionarios(funcionario, &tam_funcionario, &contador_funcionario);
-    lerFicheiroMes(salarios, &tam_salarios, &cont_salarios);
-    
-    
     char selecao = 0;
     do {
         printf("\n");
@@ -38,10 +32,10 @@ void menuPrincipal() {
         printf("  MENU PRINCIPAL\n");
         printf("------------------\n");
         printf("1-Gerir funcionários\n");
-        printf("2-Gerir tabelas\n");
+        printf("2-\n");
         printf("3-Processar Salários\n");
-        printf("4-Importar/Exportar dados\n");
-        printf("5-Gerir funcionários\n");
+        printf("4-\n");
+        printf("5-\n");
         printf("0-Sair\n");
 
         printf("\nEscolha: ");
@@ -57,20 +51,16 @@ void menuPrincipal() {
                 //gerirTabelas();
                 break;
             case '3':
-               // lerFicheiroMes(salarios, &tam_salarios, &cont_salarios);
                 processarSalarios(funcionario, contador_funcionario, tabela_irs, tabela_ss, salarios, &cont_salarios, &tam_salarios, &salarios_processados);
                 break;
             case '4':
-                listarFuncionarios(funcionario, contador_funcionario);
+
                 break;
             case '5':
-                printf("%d", procurarFuncionario(funcionario, -1, contador_funcionario));
+
                 break;
             case '6':
-                removerFuncionario(funcionario, &contador_funcionario);
-                break;
-            case '7':
-                editarFuncionario(funcionario, contador_funcionario);
+
                 break;
             case '0':
                 break;

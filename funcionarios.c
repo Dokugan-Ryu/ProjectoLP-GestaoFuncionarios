@@ -16,7 +16,6 @@ void inserirFuncionarios(Funcionario *funcionario, int num_funcionarios, int *ta
     }
     for (int i = 0; i < num_funcionarios; i++) {
         printf("---- A adicionar funcionário %d de %d ----\n", i + 1, num_funcionarios);
-        //funcionario[i].codigo = obterInt(1000, 32000, "Código: ");
         int funcionario_existe;
         do{
             int novo_codigo = obterInt(1000, 32000, "Código: ");
@@ -30,10 +29,7 @@ void inserirFuncionarios(Funcionario *funcionario, int num_funcionarios, int *ta
                 funcionario[(*contador)+i].codigo = novo_codigo;
             }
         }while(funcionario_existe != -1);
-        /*if (procurarFuncionario(funcionario, funcionario[i].codigo, *contador) != -1){
-            printf("Já existe um funcionário com o código %d."
-                    "Por favor insira um código diferente", funcionario[i].codigo);
-        }*/
+
         lerString(funcionario[(*contador)+i].nome, MAX_NOME, "Nome: ");
         lerString(funcionario[(*contador)+i].num_telefone, MAX_TELEFONE, "Nº telefone: ");
         funcionario[(*contador)+i].num_filhos = obterInt(0, 20, "Número de filhos: ");
