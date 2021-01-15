@@ -19,14 +19,16 @@ void menuPrincipal() {
     
     Salario *salarios = (Salario *) malloc(sizeof(Salario));
     int tam_salarios = 1;
-    int cont_salarios=0;
+    int cont_salarios = 0;
+    int salarios_processados = 0;
     
     lerIrs(tabela_irs);
     lerSegSoc(tabela_ss);
     
     //processarSalarios(funcionario, tabela_irs, tabela_ss);
-    lerFicheiroMes(salarios, &tam_salarios, &cont_salarios);
-    lerFicheiroMes(salarios, &tam_salarios, &cont_salarios);
+    //lerFicheiroMes(salarios, &tam_salarios, &cont_salarios);
+    //lerFicheiroMes(salarios, &tam_salarios, &cont_salarios);
+    //lerFicheiroMes(salarios, &tam_salarios, &cont_salarios);
     
     char selecao = 0;
     do {
@@ -54,7 +56,8 @@ void menuPrincipal() {
                 //gerirTabelas();
                 break;
             case '3':
-                lerFicheiroMes(salarios, &tam_salarios, &cont_salarios);
+               // lerFicheiroMes(salarios, &tam_salarios, &cont_salarios);
+                processarSalarios(funcionario, contador_funcionario, tabela_irs, tabela_ss, salarios, &cont_salarios, &tam_salarios, &salarios_processados);
                 break;
             case '4':
                 listarFuncionarios(funcionario, contador_funcionario);
@@ -81,9 +84,10 @@ void menuPrincipal() {
     free(funcionario);
     free(tabela_irs);
     free(tabela_ss);
+    free(salarios);
     funcionario=NULL;
     tabela_irs=NULL;
     tabela_ss=NULL;
-    
+    salarios=NULL;
 }
 

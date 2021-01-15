@@ -323,6 +323,7 @@ void gerirFuncionarios(Funcionario *funcionario, int *tam_funcionario, int *cont
         printf("3-Remover funcionário\n");
         printf("4-Procurar funcionário\n");
         printf("5-Listar funcionários\n");
+        printf("6-Carregar funcionários\n");
         printf("0-Sair\n");
 
         printf("\nEscolha: ");
@@ -349,6 +350,9 @@ void gerirFuncionarios(Funcionario *funcionario, int *tam_funcionario, int *cont
                 break;
             case '5':
                 listarFuncionarios(funcionario, *contador_funcionario);
+                break;
+            case '6':
+                lerFuncionarios(funcionario, tam_funcionario, contador_funcionario);
                 break;
             case '0':
                 break;

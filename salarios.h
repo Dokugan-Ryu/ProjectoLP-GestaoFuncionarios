@@ -18,16 +18,24 @@
 extern "C" {
 #endif
 
+#include "funcionarios.h"
+#include "tabelas.h"
+    
+    
+#define NUM_HORAS_TRABALHO_DIA 8    
+
 typedef struct {
     int mes, ano;
-    char codigo;
+    int codigo;
     int dias, meios_dias, fds, faltas;
     float salario_bruto, salario_liquido, subs_alim;
     float b_idade, b_antiguidade, b_assiduidade;
-    float taxa_ss_empresa, taxa_ss_funcionario;
+    float taxa_ss_empresa, taxa_ss_funcionario, taxa_irs;
 } Salario;
 
+void expandirSalarios(Salario *salarios, int *tam_salarios);
 int lerFicheiroMes(Salario *salarios, int *tam_salarios, int *cont_salarios);
+void processarSalarios(Funcionario *funcionarios, int cont_funcionarios, Irs *irs, Ss *seg_soc, Salario *salarios, int *cont_salarios, int *tam_salarios, int *salarios_processados);
 
 
 
