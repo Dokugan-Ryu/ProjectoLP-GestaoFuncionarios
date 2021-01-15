@@ -1,14 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * 
+ * 
+ * @file tabelas.c
+ * @author Diogo Queiroz
+ * @date 15 Jan 2021
+ * @brief Tabelas IRS e SS
+ * 
+ * Leitura dos ficheiros relativos às tabelas contributivas de IRS e Segurança Social
+ * 
+ * @todo: incluir suporte para gestão das tabelas contributivas
+ * 
  */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include "tabelas.h"
 
-
+/**
+ * Lê o ficheiro "ss_taxas_contributivas.txt" e grava a informação nele contida na estrutura Ss
+ * 
+ * @param tabela_ss apontador para estrutura Ss
+ */
 void lerSegSoc(Ss *tabela_ss){
     FILE *fp = fopen("ss_taxas_contributivas.txt", "rb");
         if (fp == NULL) {
@@ -63,6 +76,11 @@ void lerSegSoc(Ss *tabela_ss){
         }
 }
 
+/**
+ * Lê os ficheiros "irs_nao_casado.txt", "irs_casado_um_titular.txt" e "irs_casado_dois_titulares.txt" e grava a informação neles contidas na estrutura Irs
+ * 
+ * @param tabela_ss apontador para estrutura Irs
+ */
 void lerIrs(Irs *tabela_irs) {
     char lista_ficheiros_irs[3][50] = {"irs_nao_casado.txt", "irs_casado_um_titular.txt", "irs_casado_dois_titulares.txt"};
     for (int ficheiros = 0; ficheiros < 3; ficheiros++) {

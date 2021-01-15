@@ -1,3 +1,14 @@
+/**
+ * 
+ * 
+ * @file menuPrincipal.c
+ * @author Diogo Queiroz
+ * @date 15 Jan 2021
+ * @brief Menu Principal
+ * 
+ * Ficheiro onde são feitas as inicializações das estruturas e apresentação do menu principal
+ */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>

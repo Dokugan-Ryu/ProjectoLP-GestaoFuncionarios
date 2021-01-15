@@ -1,3 +1,13 @@
+/**
+ * 
+ * 
+ * @file input.c
+ * @author Diogo Queiroz
+ * @date 15 Jan 2021
+ * @brief Gestão de input do utilizador
+ * 
+ */
+
 #include <stdio.h>
 #include <string.h>
 

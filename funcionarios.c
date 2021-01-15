@@ -1,3 +1,13 @@
+/**
+ * 
+ * 
+ * @file funcionarios.c
+ * @author Diogo Queiroz
+ * @date 15 Jan 2021
+ * @brief Gestão de funcionários
+ * 
+ */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "funcionarios.h"

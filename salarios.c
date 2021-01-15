@@ -1,7 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * 
+ * 
+ * @file salarios.c
+ * @author Diogo Queiroz
+ * @date 15 Jan 2021
+ * @brief Processamento de salários
+ * 
  */
 
 #include <stdlib.h>
@@ -12,11 +16,28 @@
 #include "tabelas.h"
 #include "input.h"
 
+
+/**
+ * Realocação da estrutura de salários
+ * 
+ * @param salarios apontador para a estrutura salarios
+ * @param tam_salarios tamanho da estrutura salários
+ */
 void expandirSalarios(Salario *salarios, int *tam_salarios) {
     salarios = (Salario *) realloc(salarios, (*tam_salarios) + 50);
     (*tam_salarios) += 50;
 }
 
+
+/**
+ * Pede ao utilizador um nome de ficheiro, lê um ficheiro que contém dados relativos às horas trabalhadas num determinado mês, e armazena os valores lidos em salarios
+ * Chama expandirSalarios() quando a estrutura salarios não suporta mais entradas
+ * 
+ * @param salarios apontador para a estrutura salarios
+ * @param tam_salarios tamanho da estrutura salarios
+ * @param cont_salarios número de entradas presentes na estrutura salarios
+ * @return número de entradas lidas e registadas
+ */
 int lerFicheiroMes(Salario *salarios, int *tam_salarios, int *cont_salarios) {
     int num_entradas_lidas = 0;
 
@@ -98,6 +119,19 @@ int lerFicheiroMes(Salario *salarios, int *tam_salarios, int *cont_salarios) {
     return num_entradas_lidas;
 }
 
+
+/**
+ * Faz o processamento de salários. Chama lerFicheiroMes e posteriormente calcula os valores salariais referentes a cada entrada
+ * 
+ * @param funcionarios apontador para estrutura funcionarios
+ * @param cont_funcionarios número de entradas presentes na estrutura funcionarios
+ * @param irs apontador para estrutura IRS
+ * @param seg_soc apontador para estrutura Ss
+ * @param salarios apontador para estrutura salarios
+ * @param cont_salarios número de entradas presentes na estrutura salarios
+ * @param tam_salarios tamanho da estrutura salarios
+ * @param salarios_processados número de entradas da estrutura salarios que já foram processadas
+ */
 void processarSalarios(
         Funcionario *funcionarios, int cont_funcionarios,
         Irs *irs, Ss *seg_soc,

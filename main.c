@@ -1,3 +1,13 @@
+/**
+ * 
+ * 
+ * @file main.c
+ * @author Diogo Queiroz
+ * @date 15 Jan 2021
+ * @brief Ficheiro de execução inicial do programa
+ * 
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "menuPrincipal.h"
