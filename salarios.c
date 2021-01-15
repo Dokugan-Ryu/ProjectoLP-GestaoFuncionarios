@@ -32,11 +32,12 @@ int lerFicheiroMes(Salario *salarios, int *tam_salarios, int *cont_salarios) {
         //        obterInt(1900, 2021, "Ano: ");
 
         char c = 0;
-        char token[10];
+        char token[10]="";
         int coluna = 0;
         int contador = 0;
         do {
-            printf("-------%d %d-------", *tam_salarios, *cont_salarios);
+            printf("\n-------%d %d-------\n", *tam_salarios, *cont_salarios);
+            printf("token %s\n", token);
             if (*tam_salarios == *cont_salarios) {
                 expandirSalarios(salarios, tam_salarios);
             }
@@ -71,7 +72,7 @@ int lerFicheiroMes(Salario *salarios, int *tam_salarios, int *cont_salarios) {
                             break;
                     }
 
-                    //printf("\na %s %d", token, atoi(token));
+                    printf("\na %s %d", token, atoi(token));
                     for (int i = 0; i < 10; i++) {
                         token[i] = 0;
                     }
@@ -84,7 +85,7 @@ int lerFicheiroMes(Salario *salarios, int *tam_salarios, int *cont_salarios) {
                 salarios[(*cont_salarios)].faltas = atoi(token);
                 (*cont_salarios)++;
                 num_entradas_lidas++;
-                //printf("\nb %s %d", token, atoi(token));
+                printf("\nb %s %d", token, atoi(token));
                 for (int i = 0; i < 10; i++) {
                     token[i] = 0;
                 }

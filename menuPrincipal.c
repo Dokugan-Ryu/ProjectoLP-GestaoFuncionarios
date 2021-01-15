@@ -17,8 +17,8 @@ void menuPrincipal() {
     Ss *tabela_ss = (Ss *) (malloc(sizeof(Ss) * 10));
     
     
-    Salario *salarios = (Salario *) malloc(sizeof(Salario));
-    int tam_salarios = 1;
+    Salario *salarios = (Salario *) malloc(sizeof(Salario)*2);
+    int tam_salarios = 2;
     int cont_salarios = 0;
     int salarios_processados = 0;
     
@@ -27,6 +27,7 @@ void menuPrincipal() {
     
     //processarSalarios(funcionario, tabela_irs, tabela_ss);
     //lerFicheiroMes(salarios, &tam_salarios, &cont_salarios);
+    lerFuncionarios(funcionario, &tam_funcionario, &contador_funcionario);
     lerFicheiroMes(salarios, &tam_salarios, &cont_salarios);
     
     
