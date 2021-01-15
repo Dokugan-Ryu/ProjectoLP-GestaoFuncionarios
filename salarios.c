@@ -108,8 +108,8 @@ void processarSalarios(
 
     int mes, ano;
     printf("Informação referente a\n");
-    obterInt(1, 12, "Mês (1-12): ");
-    obterInt(1900, 2021, "Ano (1900-2021): ");
+    mes = obterInt(1, 12, "Mês (1-12): ");
+    ano = obterInt(1900, 2021, "Ano (1900-2021): ");
 
     int entradas_lidas = lerFicheiroMes(salarios, tam_salarios, cont_salarios);
     printf("---%d---", salarios[(*salarios_processados) + 0].codigo);
@@ -120,16 +120,22 @@ void processarSalarios(
                     funcionarios,
                     salarios[(*salarios_processados) + i].codigo,
                     cont_funcionarios);
-            printf("*********** %d *********", codigo);
+            printf("*********** %d *********\n", codigo);
             if (codigo != -1) {
                 float idade = (((12 - funcionarios[codigo].nascimento.mes) + mes) / 12) + ano - (funcionarios[codigo].nascimento.ano + 1);
+                printf("\nnasc dia ano %d %d\n",funcionarios[codigo].nascimento.mes, funcionarios[codigo].nascimento.ano);
+                printf("idade %f", idade);
                 float antiguidade = (((12 - funcionarios[codigo].contratado.mes) + mes) / 12) + ano - (funcionarios[codigo].contratado.ano + 1);
+                printf("antiguidade %f", antiguidade);
 
 
                 salarios[(*salarios_processados) + i].b_idade = funcionarios[codigo].b_idade * idade;
+                printf("b_idade %f", salarios[(*salarios_processados) + i].b_idade);
                 salarios[(*salarios_processados) + i].b_antiguidade = funcionarios[codigo].b_antiguidade * antiguidade;
+                printf("b_ant %f", salarios[(*salarios_processados) + i].b_antiguidade);
                 if (salarios[(*salarios_processados) + i].faltas == 0) {
                     salarios[(*salarios_processados) + i].b_assiduidade = funcionarios[codigo].b_antiguidade;
+                printf("bass %f", salarios[(*salarios_processados) + i].b_assiduidade);
                 } else {
                     salarios[(*salarios_processados) + i].b_assiduidade = 0;
                 }
