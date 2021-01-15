@@ -134,7 +134,7 @@ void processarSalarios(
                 salarios[(*salarios_processados) + i].b_antiguidade = funcionarios[codigo].b_antiguidade * antiguidade;
                 printf("b_ant %f", salarios[(*salarios_processados) + i].b_antiguidade);
                 if (salarios[(*salarios_processados) + i].faltas == 0) {
-                    salarios[(*salarios_processados) + i].b_assiduidade = funcionarios[codigo].b_antiguidade;
+                    salarios[(*salarios_processados) + i].b_assiduidade = funcionarios[codigo].b_assiduidade;
                 printf("bass %f", salarios[(*salarios_processados) + i].b_assiduidade);
                 } else {
                     salarios[(*salarios_processados) + i].b_assiduidade = 0;
@@ -145,12 +145,14 @@ void processarSalarios(
                         NUM_HORAS_TRABALHO_DIA * salarios[(*salarios_processados) + i].dias +
                         NUM_HORAS_TRABALHO_DIA * 0.5 * salarios[(*salarios_processados) + i].meios_dias +
                         NUM_HORAS_TRABALHO_DIA * 1.5 * salarios[(*salarios_processados) + i].fds);
+                printf("\nSalario base %f\n", salario_base);
 
-                salarios[(*salarios_processados) + i].salario_bruto = salario_base * (
-                        1 +
+                salarios[(*salarios_processados) + i].salario_bruto =
+                        salario_base +
                         salarios[(*salarios_processados) + i].b_idade +
                         salarios[(*salarios_processados) + i].b_antiguidade +
-                        salarios[(*salarios_processados) + i].b_assiduidade);
+                        salarios[(*salarios_processados) + i].b_assiduidade;
+                
 
                 int taxa_irs;
                 int categoria_irs;
@@ -192,7 +194,8 @@ void processarSalarios(
                 }
 
                 salarios[(*salarios_processados) + i].taxa_irs =
-                        salarios[(*salarios_processados) + i].salario_bruto * (1 - taxa_irs);
+                        salarios[(*salarios_processados) + i].salario_bruto * taxa_irs;
+                printf("\n irs %f\n", salarios[(*salarios_processados) + i].taxa_irs);
 
                 /*float taxa_ss_func, taxa_ss_empresa;
                 switch (funcionarios[codigo].cargo) {
@@ -207,13 +210,15 @@ void processarSalarios(
                 }*/
 
                 float taxa_ss_empresa = seg_soc[funcionarios[codigo].cargo].taxa_empresa;
+                printf("\n ssempresa %f\n", taxa_ss_empresa);
                 float taxa_ss_func = seg_soc[funcionarios[codigo].cargo].taxa_trabalhador;
+                printf("\n ssfunc %f\n", taxa_ss_func);
 
                 salarios[(*salarios_processados) + i].taxa_ss_empresa =
                         salarios[(*salarios_processados) + i].salario_bruto * (1 - taxa_ss_empresa);
 
                 salarios[(*salarios_processados) + i].taxa_ss_funcionario =
-                        salarios[(*salarios_processados) + i].salario_bruto * (1 - taxa_ss_func);
+                        salarios[(*salarios_processados) + i].salario_bruto * taxa_ss_func;
 
                 salarios[(*salarios_processados) + i].salario_liquido =
                         salarios[(*salarios_processados) + i].salario_bruto -
@@ -224,7 +229,8 @@ void processarSalarios(
 
                 printf("\n----- Salário do funcionário código %d processado -----\n", funcionarios[codigo].codigo);
                 printf("Salário bruto: €%f\n", salarios[(*salarios_processados) + i].salario_bruto);
-                printf("Subsídio alimentação: €%f\n", salarios[(*salarios_processados) + i].salario_bruto);
+                printf("Subsídio alimentação: €%f\n", funcionarios[codigo].subs_alimentacao * (
+                        salarios[(*salarios_processados) + i].dias + salarios[(*salarios_processados) + i].fds));
                 printf("Salário líquido: €%f\n", salarios[(*salarios_processados) + i].salario_liquido);
                 printf("Retenção IRS: €%f\n", salarios[(*salarios_processados) + i].taxa_irs);
                 printf("Contribuição SegSoc do trabalhador: €%f\n", salarios[(*salarios_processados) + i].taxa_ss_funcionario);
