@@ -262,6 +262,7 @@ void removerFuncionario(Funcionario *funcionario, int *contador){
     }
     printf("Prima [Enter] para continuar...");
     cleanInputBuffer();
+    system("clear");
 }
 
 void editarFuncionario(Funcionario *funcionario, int contador){

@@ -36,7 +36,8 @@ int lerFicheiroMes(Salario *salarios, int *tam_salarios, int *cont_salarios) {
         int coluna = 0;
         int contador = 0;
         do {
-            if (tam_salarios == cont_salarios) {
+            printf("-------%d %d-------", *tam_salarios, *cont_salarios);
+            if (*tam_salarios == *cont_salarios) {
                 expandirSalarios(salarios, tam_salarios);
             }
 
@@ -80,7 +81,6 @@ int lerFicheiroMes(Salario *salarios, int *tam_salarios, int *cont_salarios) {
             } else {
 
                 token[contador + 1] = '\0';
-
                 salarios[(*cont_salarios)].faltas = atoi(token);
                 (*cont_salarios)++;
                 num_entradas_lidas++;
@@ -96,8 +96,9 @@ int lerFicheiroMes(Salario *salarios, int *tam_salarios, int *cont_salarios) {
             }
         } while (c != -1);
         //printf("entradas lidas %d", num_entradas_lidas);
-        fclose(fp);
+        
     }
+    fclose(fp);
     return num_entradas_lidas;
 }
 
@@ -227,6 +228,7 @@ void processarSalarios(
                         funcionarios[codigo].subs_alimentacao * (
                         salarios[(*salarios_processados) + i].dias + salarios[(*salarios_processados) + i].fds);
 
+                
                 printf("\n----- Salário do funcionário código %d processado -----\n", funcionarios[codigo].codigo);
                 printf("Salário bruto: €%f\n", salarios[(*salarios_processados) + i].salario_bruto);
                 printf("Subsídio alimentação: €%f\n", funcionarios[codigo].subs_alimentacao * (

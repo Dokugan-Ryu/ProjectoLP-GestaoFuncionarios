@@ -35,7 +35,6 @@ void lerSegSoc(Ss *tabela_ss){
                             case 2:
                                 tabela_ss[linha].taxa_trabalhador = strtof(token, NULL);
                                 break;
-
                         }
 
                         //printf("\na %s %f", token, strtof(token, NULL));

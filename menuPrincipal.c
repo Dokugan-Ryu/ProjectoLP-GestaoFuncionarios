@@ -27,8 +27,8 @@ void menuPrincipal() {
     
     //processarSalarios(funcionario, tabela_irs, tabela_ss);
     //lerFicheiroMes(salarios, &tam_salarios, &cont_salarios);
-    //lerFicheiroMes(salarios, &tam_salarios, &cont_salarios);
-    //lerFicheiroMes(salarios, &tam_salarios, &cont_salarios);
+    lerFicheiroMes(salarios, &tam_salarios, &cont_salarios);
+    
     
     char selecao = 0;
     do {
