@@ -1,3 +1,12 @@
+/**
+ * 
+ * 
+ * @file menuPrincipal.h
+ * @author Diogo Queiroz
+ * @date 15 Jan 2021
+ * 
+ */
+
 #ifndef MENUPRINCIPAL_H
 #define MENUPRINCIPAL_H
 

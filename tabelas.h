@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   tabelas.h
- * Author: Alpha
- *
- * Created on January 14, 2021, 5:33 PM
+/**
+ * 
+ * 
+ * @file tabelas.h
+ * @author Diogo Queiroz
+ * @date 15 Jan 2021
+ * @brief Declaração das estruturas Irs e Ss
+ * 
  */
 
 #ifndef TABELAS_H
