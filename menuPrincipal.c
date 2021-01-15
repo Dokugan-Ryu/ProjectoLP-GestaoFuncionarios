@@ -2,9 +2,10 @@
 #include <stdio.h>
 #include <string.h>
 #include "menuPrincipal.h"
+#include "input.h"
 #include "funcionarios.h"
 #include "tabelas.h"
-#include "input.h"
+#include "salarios.h"
 
 void menuPrincipal() {
 
@@ -15,8 +16,18 @@ void menuPrincipal() {
     Irs *tabela_irs = (Irs *) (malloc(sizeof(Irs) * 60));
     Ss *tabela_ss = (Ss *) (malloc(sizeof(Ss) * 10));
     
+    
+    Salario *salarios = (Salario *) malloc(sizeof(Salario));
+    int tam_salarios = 1;
+    int cont_salarios=0;
+    
     lerIrs(tabela_irs);
-
+    lerSegSoc(tabela_ss);
+    
+    //processarSalarios(funcionario, tabela_irs, tabela_ss);
+    lerFicheiroMes(salarios, &tam_salarios, &cont_salarios);
+    lerFicheiroMes(salarios, &tam_salarios, &cont_salarios);
+    
     char selecao = 0;
     do {
         printf("\n");
@@ -43,7 +54,7 @@ void menuPrincipal() {
                 //gerirTabelas();
                 break;
             case '3':
-                lerFuncionarios(funcionario, &tam_funcionario, &contador_funcionario);
+                lerFicheiroMes(salarios, &tam_salarios, &cont_salarios);
                 break;
             case '4':
                 listarFuncionarios(funcionario, contador_funcionario);
@@ -68,6 +79,11 @@ void menuPrincipal() {
     } while (selecao != '0');
     
     free(funcionario);
+    free(tabela_irs);
+    free(tabela_ss);
     funcionario=NULL;
+    tabela_irs=NULL;
+    tabela_ss=NULL;
+    
 }
 

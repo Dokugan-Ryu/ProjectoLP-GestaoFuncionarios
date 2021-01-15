@@ -34,6 +34,7 @@ typedef struct {
     float taxa_trabalhador;
 } Ss;
 
+
 void lerIrs(Irs *tabela_irs);
 void lerSegSoc(Ss *tabela_ss);
 

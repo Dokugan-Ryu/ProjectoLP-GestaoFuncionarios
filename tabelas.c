@@ -8,6 +8,7 @@
 #include <string.h>
 #include "tabelas.h"
 
+
 void lerSegSoc(Ss *tabela_ss){
     FILE *fp = fopen("ss_taxas_contributivas.txt", "rb");
         if (fp == NULL) {
@@ -137,5 +138,7 @@ void lerIrs(Irs *tabela_irs) {
                 }
             } while (c != -1);
         }
+        fclose(fp);
     }
 }
+

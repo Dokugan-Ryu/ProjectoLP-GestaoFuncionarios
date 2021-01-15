@@ -7,6 +7,7 @@
       <itemPath>funcionarios.h</itemPath>
       <itemPath>input.h</itemPath>
       <itemPath>menuPrincipal.h</itemPath>
+      <itemPath>salarios.h</itemPath>
       <itemPath>tabelas.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -20,6 +21,7 @@
       <itemPath>input.c</itemPath>
       <itemPath>main.c</itemPath>
       <itemPath>menuPrincipal.c</itemPath>
+      <itemPath>salarios.c</itemPath>
       <itemPath>tabelas.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -57,6 +59,10 @@
       <item path="menuPrincipal.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="menuPrincipal.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="salarios.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="salarios.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tabelas.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -96,6 +102,10 @@
       <item path="menuPrincipal.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="menuPrincipal.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="salarios.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="salarios.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tabelas.c" ex="false" tool="0" flavor2="0">
       </item>

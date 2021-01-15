@@ -43,19 +43,65 @@ void inserirFuncionarios(Funcionario *funcionario, int num_funcionarios, int *ta
 
         printf("Data de nascimento\n");
         funcionario[i].nascimento.dia = obterInt(1, 31, "Dia: ");
-        funcionario[i].nascimento.mes = obterInt(1, 12, "Mês: ");
+        int mes = 0, fail = 0;
+        do {
+            mes = obterInt(1, 12, "Mês: ");
+            if (funcionario[i].nascimento.dia > 28 && mes == 2){
+                printf("Mês inválido, por favor tente novamente.");
+                fail = 1;
+            } else {
+                if (funcionario[i].nascimento.dia > 30 &&
+                        (mes == 4 || mes == 6 || mes == 9 || mes == 11) ){
+                     printf("Mês inválido, por favor tente novamente.");
+                fail = 1;
+                } else {
+                    fail = 0;
+                }
+            }
+        } while (fail == 1);
+        funcionario[i].nascimento.mes = mes;
         funcionario[i].nascimento.ano = obterInt(1900, 2021, "Ano: ");
 
 
         printf("Data de contratação\n");
         funcionario[i].contratado.dia = obterInt(1, 31, "Dia: ");
-        funcionario[i].contratado.mes = obterInt(1, 12, "Mês: ");
+        do {
+            mes = obterInt(1, 12, "Mês: ");
+            if (funcionario[i].contratado.dia > 28 && mes == 2){
+                printf("Mês inválido, por favor tente novamente.");
+                fail = 1;
+            } else {
+                if (funcionario[i].contratado.dia > 30 &&
+                        (mes == 4 || mes == 6 || mes == 9 || mes == 11) ){
+                     printf("Mês inválido, por favor tente novamente.");
+                fail = 1;
+                } else {
+                    fail = 0;
+                }
+            }
+        } while (fail == 1);
+        funcionario[i].contratado.mes = mes;
         funcionario[i].contratado.ano = obterInt(1900, 2021, "Ano: ");
 
 
         printf("Data de despedimento\n");
         funcionario[i].despedido.dia = obterInt(0, 31, "Dia: ");
-        funcionario[i].despedido.mes = obterInt(0, 12, "Mês: ");
+        do {
+            mes = obterInt(1, 12, "Mês: ");
+            if (funcionario[i].despedido.dia > 28 && mes == 2){
+                printf("Mês inválido, por favor tente novamente.");
+                fail = 1;
+            } else {
+                if (funcionario[i].despedido.dia > 30 &&
+                        (mes == 4 || mes == 6 || mes == 9 || mes == 11) ){
+                     printf("Mês inválido, por favor tente novamente.");
+                fail = 1;
+                } else {
+                    fail = 0;
+                }
+            }
+        } while (fail == 1);
+        funcionario[i].despedido.mes = mes;
         funcionario[i].despedido.ano = obterInt(0, 2021, "Ano: ");
 
         funcionario[i].salario_hora = obterFloat(0, 10000, "Valor salário/hora: ");

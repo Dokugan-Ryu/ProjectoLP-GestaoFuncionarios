@@ -39,6 +39,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/input.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/menuPrincipal.o \
+	${OBJECTDIR}/salarios.o \
 	${OBJECTDIR}/tabelas.o
 
 
@@ -85,6 +86,11 @@ ${OBJECTDIR}/menuPrincipal.o: menuPrincipal.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/menuPrincipal.o menuPrincipal.c
+
+${OBJECTDIR}/salarios.o: salarios.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/salarios.o salarios.c
 
 ${OBJECTDIR}/tabelas.o: tabelas.c
 	${MKDIR} -p ${OBJECTDIR}
