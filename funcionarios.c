@@ -117,6 +117,10 @@ void lerFuncionarios(Funcionario *funcionario, int *tam, int *contador) {
         funcionario[(*contador) + i] = temporario[i];
     }
     (*contador) += contador_temp;
+    
+    free(temporario);
+    temporario=NULL;
+    
     printf("Foram lidos %d funcionários.\nPrima [Enter] para continuar...", contador_temp);
     cleanInputBuffer();
     system("clear");

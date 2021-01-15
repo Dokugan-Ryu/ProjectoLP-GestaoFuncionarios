@@ -3,6 +3,7 @@
 #include <string.h>
 #include "menuPrincipal.h"
 #include "funcionarios.h"
+#include "tabelas.h"
 #include "input.h"
 
 void menuPrincipal() {
@@ -11,6 +12,10 @@ void menuPrincipal() {
     int tam_funcionario = MAX_FUNCIONARIOS;
     int contador_funcionario = 0;
 
+    Irs *tabela_irs = (Irs *) (malloc(sizeof(Irs) * 60));
+    Ss *tabela_ss = (Ss *) (malloc(sizeof(Ss) * 10));
+    
+    lerIrs(tabela_irs);
 
     char selecao = 0;
     do {
@@ -35,7 +40,7 @@ void menuPrincipal() {
                 gerirFuncionarios(funcionario, &tam_funcionario, &contador_funcionario);
                 break;
             case '2':
-                gravarFuncionarios(funcionario, &contador_funcionario);
+                //gerirTabelas();
                 break;
             case '3':
                 lerFuncionarios(funcionario, &tam_funcionario, &contador_funcionario);
@@ -61,4 +66,8 @@ void menuPrincipal() {
                 system("clear");
         }
     } while (selecao != '0');
+    
+    free(funcionario);
+    funcionario=NULL;
 }
+

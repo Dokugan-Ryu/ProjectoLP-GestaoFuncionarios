@@ -38,7 +38,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/funcionarios.o \
 	${OBJECTDIR}/input.o \
 	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/menuPrincipal.o
+	${OBJECTDIR}/menuPrincipal.o \
+	${OBJECTDIR}/tabelas.o
 
 
 # C Compiler Flags
@@ -84,6 +85,11 @@ ${OBJECTDIR}/menuPrincipal.o: menuPrincipal.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/menuPrincipal.o menuPrincipal.c
+
+${OBJECTDIR}/tabelas.o: tabelas.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tabelas.o tabelas.c
 
 # Subprojects
 .build-subprojects:
